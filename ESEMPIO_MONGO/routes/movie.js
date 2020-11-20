@@ -10,11 +10,12 @@ router.get('/', function (req, res, next) {
     client.connect(err => {
         const collection = client.db("sample_mflix").collection("movies"); //Mi connetto alla collection movies
         // perform actions on the collection object
-        collection.find().limit(10).toArray((err, result) => {
-            if (err) console.log(err.message); //Se c'è qualche errore lo stampo
-            else res.send(result);;
-            client.close(); //Quando ho terminato la find chiudo la sessione con il db
+        collection.find({ 'title': `${title}` }).toArray((err, result) => {
+        if (err) console.log(err.message); //Se c'è qualche errore lo stampo
+        else res.send(result);
+        client.close(); //Quando ho terminato la find chiudo la sessione con il db
         }); //Eseguo la query e passo una funzione di callback
+
 
     });
 });
