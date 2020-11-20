@@ -4,7 +4,9 @@ var router = express.Router();
 const MongoClient = require('mongodb').MongoClient; //Importo la libreria mongodb
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
+router.get('/movie_from_title/:title', function (req, res, next) {
+    console.log(req.params); //Leggo i parametri passati all'url
+    title = req.params.title;
     const uri = "mongodb+srv://andrewjm:andrewko08@cluster0.glqtn.mongodb.net/Cluster0?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     client.connect(err => {
