@@ -13,7 +13,7 @@ export class AppComponent {
  constructor(private http : HttpClient){}
  load10Movies()
  {
-    this.obs = this.http.get("TUO_URL_PER_SCARICARE_10_FILM");
+    this.obs = this.http.get("https://3000-e1838874-5d49-4c8c-b1df-3ca2e124eccf.ws-eu01.gitpod.io/movie");
     this.obs.subscribe(this.getData);
  }
     getData = (data) => {
